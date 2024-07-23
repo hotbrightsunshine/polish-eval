@@ -1,0 +1,4 @@
+[Project]
+Name=polish-eval
+Manager=KDevCustomMakeManager
+VersionControl=kdevgit
