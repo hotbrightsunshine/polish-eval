@@ -1,8 +1,8 @@
-#include "./polish.h"
+#include "polish.h"
 
 float stPop() {
     if (_point - 1 < 0) {
-        _flag = 1;
+        _flag = ERR_STACK_INVALID_POINTER;
         return 0;
     }
     return _stack[--_point];
@@ -14,7 +14,7 @@ float stSpy() {
 
 void stPush(float f) {
     if (_point + 1 >= STACK_SIZE) {
-        _flag = 2;
+        _flag = ERR_STACK_INVALID_POINTER;
         return;
     }
     _stack[_point++] = f;
@@ -22,7 +22,7 @@ void stPush(float f) {
 
 void stReplicate() {
     if (_point + 1 >= STACK_SIZE) {
-        _flag = 3;
+        _flag = ERR_STACK_INVALID_POINTER;
         return;
     }
     float * val = &(_stack[_point]);

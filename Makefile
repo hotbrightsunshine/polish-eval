@@ -1,16 +1,14 @@
 CC=gcc
-CFLAGS=-Wall -L. -lpolish
-
+CFLAGS= -g -Wall -L. -lpolish -lm
 lib:
 	$(CC) $(CFLAGS) -c stack.c eval.c
-	ar -rc libpolish.a stack.o eval.o
-	ranlib libpolish.a
+	ar rcs libpolish.a stack.o eval.o
 
 debug: clean lib
 	$(CC) $(CFLAGS) -g -o polish-eval main.c
 
 stable: clean lib
-	$(CC) $(CFLAGS) -o polish-eval main.c
+	$(CC) -g -o polish-eval main.c $(CFLAGS)
 
 clean:
 	rm -vfr *~ polish-eval
