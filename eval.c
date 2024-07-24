@@ -58,4 +58,6 @@ float nextNumber(char substr[], int *read) {
         return result;
 }
 
-char* nextWord(char substr[], int *read);
+void nextWord(char substr[], int *read) {
+    for (*read = 0; (getCharType(substr[*read])) == Letter; (*read)++);
+}
