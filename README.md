@@ -3,9 +3,11 @@
 The following program evaluates a IPN string and prints the first item on the stack.
 
 ## Supported operations
-Two-variables operations: + - * / % log
-One-variable operations: sin cos tan exp
-Direct access to «math.c» variables: pi e
+Two-variables operations: `+` `-` `*` `/` `%` `log <base> <arg>`
+
+One-variable operations: `sin` `cos` `tan` `exp`
+
+Direct access to «math.c» variables: `pi` `e`
 
 ## Variables
 Variables can be created using the <varname> eq; instruction, up to a maximum of ten variables.

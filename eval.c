@@ -61,3 +61,27 @@ float nextNumber(char substr[], int *read) {
 void nextWord(char substr[], int *read) {
     for (*read = 0; (getCharType(substr[*read])) == Letter; (*read)++);
 }
+
+int isWordLengthDifferent(char* a, char* b) {
+    int i;
+    for(i = 0; a[i] != '\0'; i++) {
+        if(b[i] == '\0') return 1;
+    }
+    if(a[i] == b[i]) { return 0; }
+    else { return 1; }
+}
+
+int eqWord(char* a, char* b) {
+    if(isWordLengthDifferent(a, b)) {
+        return 1;
+    } else {
+        for(int i = 0; a[i] != '\0'; i++) {
+            if(a[i] != b[i]) {
+                return 1;
+            }
+        }
+        return 0;
+    }
+}
+
+
