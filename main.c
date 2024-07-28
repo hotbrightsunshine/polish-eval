@@ -3,6 +3,5 @@
 #include "polish.h"
 
 int main(int argc, char **argv) {
-    int i = eqWord("ciao", "cioa");
-    printf("%d", i);
+    printf("%d\n", getOpCode("dog", 3));
 }

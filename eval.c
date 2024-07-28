@@ -71,17 +71,22 @@ int isWordLengthDifferent(char* a, char* b) {
     else { return 1; }
 }
 
-int eqWord(char* a, char* b) {
-    if(isWordLengthDifferent(a, b)) {
-        return 1;
-    } else {
-        for(int i = 0; a[i] != '\0'; i++) {
-            if(a[i] != b[i]) {
-                return 1;
-            }
+int eqWord(char* a, char* b, int len) {
+    for(int i = 0; i < len ; i++) {
+        if(a[i] != b[i] || a[i] == '\0' || b[i] == '\0') {
+            return 1;
         }
-        return 0;
     }
+    return 0;
 }
 
+
+int getOpCode(char str[], unsigned len) {
+    for(int i = 0; i < sizeof(_operations)/sizeof(Operation); i++) {
+        if(eqWord(str, _operations[i].sym, len) == 0) {
+            return _operations[i].code;
+        }
+    }
+    return -1;
+}
 

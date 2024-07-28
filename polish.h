@@ -15,13 +15,32 @@ enum CharType { Number, Letter, Comma, Void, Unknown, EOS };
 #define ERR_PARSING_TOO_MANY_COMMAS 2
 #define ERR_STACK_INVALID_POINTER 51
 
-#define OP_PLUS 0
-#define OP_MINUS 1
-#define OP_MULT 2
-#define OP_DIVIDE 3
-#define OP_MOD 4
-#define OP_LOG 5
-#define
+typedef struct {
+    char* sym;
+    int code;
+} Operation;
+
+typedef struct {
+    char* sym;
+    float value;
+} Variable;
+
+/* 0-49 single char operations
+ * 50-99 two char operations
+ * 100... three char operations
+*/
+Operation static _operations[] = {
+    {"+", 0},
+    {"-", 1},
+    {"/", 2},
+    {"*", 3},
+    {"%", 4},
+    {"sin", 100},
+    {"cos", 101},
+    {"tan", 102},
+    {"exp", 103},
+    {"log", 104}
+};
 
 float static _stack[STACK_SIZE];
 int static _point;
@@ -48,7 +67,9 @@ float nextNumber(char substr[], int *read);
 void nextWord(char substr[], int *read);
 
 int isWordLengthDifferent(char* a, char* b);
-int eqWord(char* a, char* b);
 
+// Returns 0 if string a = string b for #len characters.
+int eqWord(char* a, char* b, int len);
+int getOpCode(char str[], unsigned len);
 
 #endif
